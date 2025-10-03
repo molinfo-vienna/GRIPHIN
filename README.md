@@ -28,7 +28,7 @@ If you use this code or the model in your research, please cite our paper:
     mamba activate grape
     ```
 
-2. **Navigate to the `grape` folder and store the path to the working directory.**
+2. **Clone the repo, navigate to the `GRAPE` folder and store the path to the working directory.**
 
     ```
     cd GRAPE
@@ -76,38 +76,38 @@ If you are simply interested in using the model for inference, you can skip this
     Visit the download section of the official [PDBBind](https://www.pdbbind-plus.org.cn/download) homepage, where you will be prompted to create an account. 
     Scroll down to the PDBBind v2020 table and download the following files:
         `1. Index files of PDBbind`, `2. Protein-ligand complexes: The general set minus refined set`, and `3. Protein-ligand complexes: The refined set`.
-    Place the respective zip-files into the folder `data/PDBbind_2020` and untar them.
+    Place the respective tar-files into the folder `data/PDBbind_2020` and untar them.
 
     ```
-    tar -xvf data/PDBbind_2020/PDBbind_v2020_plain_text_index.tar.gz
-    tar -xvf data/PDBbind_2020/PDBbind_v2020_refined.tar.gz
-    tar -xvf data/PDBbind_2020/PDBbind_v2020_other_PL.tar.gz
+    tar -xvf data/PDBbind_2020/PDBbind_v2020_plain_text_index.tar.gz -C data/PDBbind_2020
+    tar -xvf data/PDBbind_2020/PDBbind_v2020_refined.tar.gz -C data/PDBbind_2020
+    tar -xvf data/PDBbind_2020/PDBbind_v2020_other_PL.tar.gz -C data/PDBbind_2020
     ```
     
     The `data_preprocessing` folder contains a Python script to calculate GRAIL maps from the PDBBind entries. The script has a couple of options, but for reproduction of the results, you should use the default settings. Note that you can increase the number of CPU workers for faster processing with the -w flag.
 
     ```
-    python $DIR/data_preprocessing/calc_grails_pdb_bind.py -d $DIR/data/PDBBind_2020/refined-set -o $DIR /data/PDBBind_2020/refined-set-GRAIL -w 4
+    python $DIR/data_preprocessing/calc_grails_pdb_bind.py -d $DIR/data/PDBbind_2020/refined-set -o $DIR/data/PDBbind_2020/refined-set-GRAIL -w 4
     ```
 
     and 
 
     ```
-    python $DIR/data_preprocessing/calc_grails_pdb_bind.py -d $DIR/data/PDBBind_2020/v2020-other-PL -o $DIR /data/PDBBind_2020/v2020-other-PL-GRAIL
+    python $DIR/data_preprocessing/calc_grails_pdb_bind.py -d $DIR/data/PDBbind_2020/v2020-other-PL -o $DIR/data/PDBbind_2020/v2020-other-PL-GRAIL -w 4
     ```
 
     Pytorch geometric datasets work internally with a `raw` folder for unprocessed data and a `processed` folder for the processed pytorch tensors. 
     Create the `raw` folder with the provided script:
 
     ```
-    python $DIR/data_preprocessing/create_raw_folder.py -d $DIR/data/PDBBind_2020
+    python $DIR/data_preprocessing/create_raw_folder.py -d $DIR/data/PDBbind_2020
     ```
 
     The last thing we need are the binding affinites, which are provided in the PDBBind index file. 
     Execute the following script to create a cleaned up csv file for further use:
 
     ```
-    python $DIR/data_preprocessing/index_file_processing.py -d $DIR/data/PDBBind_2020
+    python $DIR/data_preprocessing/index_file_processing.py -d $DIR/data/PDBbind_2020
     ```
 
     Now you are all set for training GRAPE models on the PDBBind dataset and reproduction of the paper results. 
