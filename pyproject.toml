@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "grape"
+name = "griphin"
 version = "2025.9.25"
 description = "Grids of Pharmacophore Interaction Fields for Affinity Prediction"
 readme = "README.md"
