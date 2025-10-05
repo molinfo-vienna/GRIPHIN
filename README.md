@@ -1,10 +1,10 @@
-## GRAPE: Grids of Pharmacophore Interaction Fields for Affinity Prediction
+## GRIPHIN: Grids of Pharmacophore Interaction Fields for Affinity Prediction
 
 ![image](images/overview.png)
 
 **General information**
 
-This is the official implementation of the GRAPE model for affinity prediction.
+This is the official implementation of the GRIPHIN model for affinity prediction.
 You can find the preprint on [arxiv]().
 The pretrained model is available via [figshare]().
 
@@ -24,14 +24,14 @@ If you use this code or the model in your research, please cite our paper:
 1. **Install Mamba and create a new environment:**
 
     ```bash
-    mamba create -n grape python==3.11.13
-    mamba activate grape
+    mamba create -n griphin python==3.11.13
+    mamba activate griphin
     ```
 
-2. **Clone the repo, navigate to the `GRAPE` folder and store the path to the working directory.**
+2. **Clone the repo, navigate to the `GRIPHIN` folder and store the path to the working directory.**
 
     ```
-    cd GRAPE
+    cd GRIPHIN
     export DIR=$PWD
     ```
 
@@ -45,7 +45,7 @@ If you use this code or the model in your research, please cite our paper:
     To install the CPU-version, you can skip this step.
     Please note that MacOS only supports the CPU version of pytorch.
 
-4. **Now install the GRAPE package and all other dependencies:**
+4. **Now install the GRIPHIN package and all other dependencies:**
 
     ```bash
     pip install -e .
@@ -54,16 +54,16 @@ If you use this code or the model in your research, please cite our paper:
 5. **Download trained model from figshare:**
 
     There are three files you can download from the provided [figshare](https://figshare.com/s/532ae463b3add3ffe732) link.
-    `grape_model.tar.gz` contains the trained model that can be used for inference.
-    `grape_model_lppdb.tar.gz` contains a model that was trained on the LP-PDBBind split.
+    `griphin_model.tar.gz` contains the trained model that can be used for inference.
+    `griphin_model_lppdb.tar.gz` contains a model that was trained on the LP-PDBBind split.
     It it needed for reproduction of the paper results, but since it was trained on less data, we do not recommend it for inference.
     `data_lp.tar.gz` contains the preprocessed test dataset as provided by the LP-PDBBind study.
-    Place the downloaded files into the `GRAPE` root directory. 
+    Place the downloaded files into the `GRIPHIN` root directory. 
     Untaring will create a `trained_models` folder containing the trained models and add the LP-PDBBind test sets into the `data` folder:
 
     ```
-    tar -xvf grape_model.tar.gz 
-    tar -xvf grape_model_lppdb.tar.gz
+    tar -xvf griphin_model.tar.gz 
+    tar -xvf griphin_model_lppdb.tar.gz
     tar -xvf data_lp.tar.gz
     ```
 
@@ -110,7 +110,7 @@ If you are simply interested in using the model for inference, you can skip this
     python $DIR/data_preprocessing/index_file_processing.py -d $DIR/data/PDBbind_2020
     ```
 
-    Now you are all set for training GRAPE models on the PDBBind dataset and reproduction of the paper results. 
+    Now you are all set for training GRIPHIN models on the PDBBind dataset and reproduction of the paper results. 
 
 **Reproduction of paper results and interactive attribution exploration**
 
@@ -120,7 +120,7 @@ We have further implemented an interactive app with py3dmol to explore GRAIL map
 
 **Model training**
 
-To train the GRAPE model yourself after PDBBind processing, run the following script:
+To train the GRIPHIN model yourself after PDBBind processing, run the following script:
 
 ```
 python $DIR/scripts/training.py --config $DIR/scripts/config.yaml

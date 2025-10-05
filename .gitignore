@@ -3,7 +3,7 @@ data
 !data/PDBbind_2020/lp-split/**
 !data/PDBbind_2020/core-set/**
 !data/PDBbind_2020/time-split/**
-!src/grape/data/**
+!src/griphin/data/**
 __pycache__/
 .vscode
 .env
