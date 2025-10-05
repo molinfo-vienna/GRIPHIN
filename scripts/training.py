@@ -8,8 +8,8 @@ from lightning.pytorch.callbacks import ModelCheckpoint
 import torch
 import torch_geometric
 
-from grape.data import GrailDataModule
-from grape.model import GrailRegressor, load_model_from_path
+from griphin.data import GrailDataModule
+from griphin.model import GrailRegressor, load_model_from_path
 
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
