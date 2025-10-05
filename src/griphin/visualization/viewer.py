@@ -193,33 +193,40 @@ class Py3DmolViewer:
     def add_channels(
         self,
         grid_channels=[],
-        threshold=0.9,
-        threshold_attr=0.1,
+        threshold=0.5,
+        threshold_attr=0.5,
         attribution_mode=0,
         intersect_ligand=False,
     ):
         for channel in grid_channels:
             grid = self.grid_list[channel]
+            attribution = self.attribution_data[:, :, :, channel]
             if channel == 0:
                 grid = grid / grid.max()
-            attribution = self.attribution_data[:, :, :, channel]
             if intersect_ligand:
                 grid = grid * self.grid_list[-1]
             if attribution_mode == 0:
                 self.add_grid_data(grid, threshold=threshold, color="blue")
+            # elif attribution_mode == 1:
+            #     self.add_grid_data(grid, threshold=threshold, color="blue")
+            #     if intersect_ligand:
+            #         attribution = attribution * self.grid_list[-1]
+            #     self.add_grid_data(attribution, threshold=threshold_attr, color="red")
+            # elif attribution_mode == 2:
+            #     self.add_grid_data(
+            #         grid * attribution, threshold=threshold_attr, color="purple"
+            #     )
             elif attribution_mode == 1:
-                self.add_grid_data(grid, threshold=threshold, color="blue")
                 if intersect_ligand:
                     attribution = attribution * self.grid_list[-1]
-                self.add_grid_data(attribution, threshold=threshold_attr, color="red")
-            elif attribution_mode == 2:
-                self.add_grid_data(
-                    grid * attribution, threshold=threshold_attr, color="purple"
-                )
-            elif attribution_mode == 3:
-                if intersect_ligand:
-                    attribution = attribution * self.grid_list[-1]
-                self.add_grid_data(attribution, threshold=threshold_attr, color="red")
+                if threshold_attr >= 0:
+                    self.add_grid_data(
+                        attribution, threshold=threshold_attr, color="red"
+                    )
+                else:
+                    self.add_grid_data(
+                        -attribution, threshold=-threshold_attr, color="yellow"
+                    )
 
     def remove_surfaces(self):
         self.view.removeAllShapes()
@@ -257,9 +264,9 @@ class InteractionWrapper:
 
         self.attribution_modes = {
             "No attributions": 0,
-            "Seperate attributions": 1,
-            "Intersecting attributions": 2,
-            "Attributions only": 3,
+            # "Seperate attributions": 1,
+            # "Intersecting attributions": 2,
+            "Attributions": 1,
         }
 
         # widgets:
@@ -290,7 +297,23 @@ class InteractionWrapper:
         )
 
         self.checkbox6 = ipywidgets.Checkbox(
-            value=False, description="channels visible", disabled=False, indent=False
+            value=False, description="Channels visible", disabled=False, indent=False
+        )
+
+        self.threshold_slider = ipywidgets.FloatSlider(
+            value=0.9,  # Default value
+            min=0.0,  # Minimum value
+            max=1.0,  # Maximum value
+            step=0.05,  # Step size
+            description="GRAIL Threshold:",
+        )
+
+        self.attribution_slider = ipywidgets.FloatSlider(
+            value=0.1,  # Default value
+            min=-1.0,  # Minimum value
+            max=1.0,  # Maximum value
+            step=0.05,  # Step size
+            description="Attribution Threshold:",
         )
 
     def interactive_view(
@@ -302,6 +325,8 @@ class InteractionWrapper:
         protein_visible=True,
         ligand_visible=True,
         channels_visible=False,
+        threshold=0.5,
+        threshold_attr=0.5,
     ):
         idx = self.channels[channel]
         attribution_mode = self.attribution_modes[attribution_mode]
@@ -309,8 +334,8 @@ class InteractionWrapper:
         if channels_visible:
             viewer.add_channels(
                 grid_channels=[idx],
-                threshold=0.9,
-                threshold_attr=0.1,
+                threshold=threshold,
+                threshold_attr=threshold_attr,
                 attribution_mode=attribution_mode,
                 intersect_ligand=intersect_ligand,
             )
@@ -318,7 +343,7 @@ class InteractionWrapper:
         viewer.toggle_ligand_visibility(visible=ligand_visible)
         viewer.view.update()
 
-    def interaction(self, viewer):
+    def interaction(self, viewer):  # , threshold=0.9, threshold_attr=0.1):
         interact(
             self.interactive_view,
             viewer=fixed(viewer),
@@ -328,4 +353,6 @@ class InteractionWrapper:
             protein_visible=self.checkbox4,
             ligand_visible=self.checkbox5,
             channels_visible=self.checkbox6,
+            threshold=self.threshold_slider,
+            threshold_attr=self.attribution_slider,
         )

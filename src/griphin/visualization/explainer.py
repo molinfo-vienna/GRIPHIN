@@ -1,6 +1,7 @@
 from captum.attr import IntegratedGradients
 import torch
 from torch_geometric.data import Data
+import numpy as np
 
 
 class Explainer:
@@ -55,5 +56,5 @@ class Explainer:
             internal_batch_size=1,
         )
         attributions = attributions.cpu().detach().numpy()
-        attributions_normalized = attributions / attributions.max()
+        attributions_normalized = attributions / np.abs(attributions).max()
         return attributions_normalized
