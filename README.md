@@ -5,8 +5,8 @@
 **General information**
 
 This is the official implementation of the GRIPHIN model for affinity prediction.
-You can find the preprint on [arxiv]().
-The pretrained model is available via [figshare]().
+You will find the preprint soon on [ChemRxiv]().
+The pretrained model will soon be available via [figshare]().
 
 This project was developed with the following system specifications:
 - **GPU:** NVIDIA GeForce 4090 RTX with 24 GB GDDR6X (recommended for model inference and training).
