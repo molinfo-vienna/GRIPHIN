@@ -6,7 +6,7 @@
 
 This is the official implementation of the GRIPHIN model for affinity prediction.
 You will find the preprint soon on [ChemRxiv]().
-The pretrained model is available via [figshare](https://figshare.com/s/532ae463b3add3ffe732).
+The pretrained model is available via [figshare](https://figshare.com/articles/journal_contribution/GRIPHIN_Grids_of_Pharmacophore_Interaction_Fields_for_Affinity_Prediction_-_Trained_model_and_preprocessed_data/30272203).
 
 This project was developed with the following system specifications:
 - **GPU:** NVIDIA GeForce 4090 RTX with 24 GB GDDR6X (recommended for model inference and training).
@@ -53,7 +53,7 @@ If you use this code or the model in your research, please cite our paper:
 
 5. **Download trained model from figshare:**
 
-    There are three files you can download from the provided [figshare](https://figshare.com/s/532ae463b3add3ffe732) link.
+    There are three files you can download from the provided [figshare](https://figshare.com/articles/journal_contribution/GRIPHIN_Grids_of_Pharmacophore_Interaction_Fields_for_Affinity_Prediction_-_Trained_model_and_preprocessed_data/30272203) link.
     `griphin_model.tar.gz` contains the trained model that can be used for inference.
     `griphin_model_lppdb.tar.gz` contains a model that was trained on the LP-PDBBind split.
     It it needed for reproduction of the paper results, but since it was trained on less data, we do not recommend it for inference.
