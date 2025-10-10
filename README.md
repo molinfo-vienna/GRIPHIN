@@ -13,11 +13,7 @@ This project was developed with the following system specifications:
 - **CPU:** AMD EPYC 7713 64-Core Processor (used for data preprocessing and pharmacophore alignment).
 - **OS:** Rocky Linux (v9.4).
 
-If you use this code or the model in your research, please cite our paper:
-
-```bibtex
-    tba
-```
+---
 
 **Installation**
 
@@ -112,6 +108,8 @@ If you are simply interested in using the model for inference, you can skip this
 
     Now you are all set for training GRIPHIN models on the PDBBind dataset and reproduction of the paper results. 
 
+---
+
 **Reproduction of paper results and interactive attribution exploration**
 
 We provide you with two notebooks. 
@@ -127,3 +125,18 @@ python $DIR/scripts/training.py --config $DIR/scripts/config.yaml
 ```
 
 This will create a logs folder in your root directory, where you will find the model together with the respective tensorboard logs.
+
+---
+
+If you use this code or the model in your research, please cite our paper:
+
+```bibtex
+@article{rose2025griphin,
+  title={GRIPHIN: Grids of Pharmacophore Interaction Fields for Affinity Prediction},
+  author={Rose, Daniel and Seidel, Thomas and Langer, Thierry},
+  year={2025},
+  journal={ChemRxiv},
+  doi={10.26434/chemrxiv-2025-6vtks},
+  url={http://dx.doi.org/10.26434/chemrxiv-2025-6vtks},
+}
+```
