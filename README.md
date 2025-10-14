@@ -5,7 +5,7 @@
 **General information**
 
 This is the official implementation of the GRIPHIN model for affinity prediction.
-You will find the preprint soon on [ChemRxiv](https://chemrxiv.org/engage/chemrxiv/article-details/68e37981dfd0d042d1276d40).
+You can find the preprint on [ChemRxiv](https://chemrxiv.org/engage/chemrxiv/article-details/68e37981dfd0d042d1276d40).
 The pretrained model is available via [figshare](https://figshare.com/articles/journal_contribution/GRIPHIN_Grids_of_Pharmacophore_Interaction_Fields_for_Affinity_Prediction_-_Trained_model_and_preprocessed_data/30272203).
 
 This project was developed with the following system specifications:
