@@ -5,7 +5,7 @@
 **General information**
 
 This is the official implementation of the GRIPHIN model for affinity prediction.
-You can find the preprint on [ChemRxiv](https://chemrxiv.org/engage/chemrxiv/article-details/68e37981dfd0d042d1276d40).
+You can find the paper [here](https://link.springer.com/article/10.1186/s13321-026-01203-8).
 The pretrained model is available via [figshare](https://figshare.com/articles/journal_contribution/GRIPHIN_Grids_of_Pharmacophore_Interaction_Fields_for_Affinity_Prediction_-_Trained_model_and_preprocessed_data/30272203).
 
 This project was developed with the following system specifications:
@@ -131,12 +131,11 @@ This will create a logs folder in your root directory, where you will find the m
 If you use this code or the model in your research, please cite our paper:
 
 ```bibtex
-@article{rose2025griphin,
+@article{rose2026griphin,
   title={GRIPHIN: Grids of Pharmacophore Interaction Fields for Affinity Prediction},
   author={Rose, Daniel and Seidel, Thomas and Langer, Thierry},
-  year={2025},
-  journal={ChemRxiv},
-  doi={10.26434/chemrxiv-2025-6vtks},
-  url={http://dx.doi.org/10.26434/chemrxiv-2025-6vtks},
+  year={2026},
+  journal={J. Cheminform.},
+  doi={https://doi.org/10.1186/s13321-026-01203-8},
 }
 ```
